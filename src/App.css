@@ -8,6 +8,7 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #root {
@@ -15,56 +16,86 @@ body {
     width: 100%;
     display: grid;
     place-items: center;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
-    background: #ddd;
+    background: #C9D6FF;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #E2E2E2, #C9D6FF);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
-.container {
-    max-width: 75vw;
-    width: 300px;
-    height: 275px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    border-radius: 10px;
-    background-color: #222;
-    color: #ddd;
-    box-shadow: 10px 10px 10px #444;
-}
-
-#drum-machine {
+.calculator {
+    width: 400px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 6px;
-}
-
-.drum-pad {
-    border: 2px solid #ddd;
-    box-shadow: 3px 3px #ddd;
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
-    text-align: center;
-    line-height: 50px;
-    cursor: pointer;
-    user-select: none;
-    transition: .2s;
-}
-
-.active {
-    background-color: #ddd;
-    color: #222;
-    box-shadow: none;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1.5fr repeat(5, 1fr);
+    grid-template-areas:
+        'dis dis dis dis'
+        'add subtract multiply divide'
+        'seven eight nine equals'
+        'four five six equals'
+        'one two three equals'
+        'zero decimal clear equals'
+    ;
+    border-radius: 10px;
 }
 
 #display {
-    width: 75%;
-    height: 50px;
-    font-size: 25px;
+    grid-area: dis;
+    background-color: #252525;
+    color: #F5F5F5;
+    height: 75px;
+    padding: 0 10px;
+    line-height: 75px;
+    font-size: 30px;
+    text-align: right;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+}
+
+#add,
+#subtract,
+#multiply,
+#divide {
+    background-color: #ddd;
+}
+
+#add:hover,
+#subtract:hover,
+#multiply:hover,
+#divide:hover {
+    background-color: #ccc;
+}
+
+.key {
+    background-color: #fff;
+    border: 1px solid #ccc;
     text-align: center;
+    width: 100px;
+    min-height: 50px;
     line-height: 50px;
-    border-radius: 10px;
-    border: 2px solid #ddd;
+    font-size: 20px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.key:hover {
+    background-color: #ccc;
+    border: 1px solid #444;
+}
+
+#equals {
+    grid-area: equals;
+    background-color: #F88866;
+    line-height: 200px;
+    border-radius: 0 0 10px 0;
+}
+
+#equals:hover {
+    background-color: #fa754c;
+}
+
+#zero {
+    border-radius: 0 0 0 10px;
 }
