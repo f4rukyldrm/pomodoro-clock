@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    user-select: none;
 }
 
 html,
@@ -16,86 +17,132 @@ body {
     width: 100%;
     display: grid;
     place-items: center;
-    background: #C9D6FF;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #E2E2E2, #C9D6FF);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background-color: #333;
 }
 
-.calculator {
-    width: 400px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1.5fr repeat(5, 1fr);
-    grid-template-areas:
-        'dis dis dis dis'
-        'add subtract multiply divide'
-        'seven eight nine equals'
-        'four five six equals'
-        'one two three equals'
-        'zero decimal clear equals'
-    ;
-    border-radius: 10px;
+.timer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    box-sizing: content-box;
+    padding: 50px;
+    width: 350px;
+    height: 350px;
+    max-height: 65vw;
+    max-width: 65vw;
+    background-color: #bbb;
+    border-radius: 50%;
+    box-shadow:  0px 0px 25px #000;
+    z-index: 999;
 }
 
-#display {
-    grid-area: dis;
-    background-color: #252525;
-    color: #F5F5F5;
+.length-container {
     height: 75px;
-    padding: 0 10px;
-    line-height: 75px;
-    font-size: 30px;
-    text-align: right;
-    border-radius: 10px 10px 0 0;
-    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
-#add,
-#subtract,
-#multiply,
-#divide {
-    background-color: #ddd;
+#break-label,
+#session-label {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: .5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    align-self: flex-end;
 }
 
-#add:hover,
-#subtract:hover,
-#multiply:hover,
-#divide:hover {
-    background-color: #ccc;
-}
-
-.key {
-    background-color: #fff;
-    border: 1px solid #ccc;
+.length-btns {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
     text-align: center;
-    width: 100px;
-    min-height: 50px;
-    line-height: 50px;
+    border: 1px solid #bbb;
+}
+
+.length-btns button {
+    width: 25px;
+    height: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 25px;
+    background-color: #333;
+    color: #ddd;
+}
+
+.length-btns div {
+    width: 35px;
+    line-height: 25px;
+}
+
+.time-container {
+    height: 275px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#timer-label {
     font-size: 20px;
-    user-select: none;
+    letter-spacing: .5px;
+}
+
+#time-left {
+    font-size: 70px;
+    font-weight: 100;
+    letter-spacing: .5px;
+}
+
+.time-btns {
+    display: flex;
+    gap: 25px;
+}
+
+#start_stop,
+#reset {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444;
     cursor: pointer;
 }
 
-.key:hover {
-    background-color: #ccc;
-    border: 1px solid #444;
+#start_stop svg,
+#reset svg {
+    width: 20px;
+    height: 20px;
+    fill: #ddd;
 }
 
-#equals {
-    grid-area: equals;
-    background-color: #F88866;
-    line-height: 200px;
-    border-radius: 0 0 10px 0;
+.fade-text svg {
+    width: 100%;
+    height: 100%;
+    fill: #ddd;
 }
 
-#equals:hover {
-    background-color: #fa754c;
+.fade-text {
+    width: 800px;
+    height: 800px;
+    max-width: ;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
-#zero {
-    border-radius: 0 0 0 10px;
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
